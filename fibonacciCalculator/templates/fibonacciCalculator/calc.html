@@ -20,13 +20,12 @@
 
  
       <div class="container text-center">
-          <form class="form-signin" id="login_form" method="post" action="/fibonacciCalculator/calc/">
-            
+          <form class="form-signin" id="input_N" method="post" action="/fibonacciCalculator/calc/">           
+        
             {% csrf_token %}
-            
 
             <br>
-            <input type="text" name="number" class="form-control" placeholder="Give Number greater than 1 e.g. 6th fibonacii number is 8" value="" required autofocus>
+            <input type="text" name="number" class="form-control" placeholder="Give Number greater than 0 e.g. 6 " value="" required autofocus>
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Get Number</button>
           </form>
@@ -35,6 +34,7 @@
           <table class="table table-bordered table-hover table-striped tablesorter">
               <thead>
               <tr>
+		<th class="header"> Method <i class="icon-sort"></i></th>
                 <th class="header"> Nth Fibonacci <i class="icon-sort"></i></th>
                 <th class="header"> Time taken <i class="icon-sort"></i></th>
                 
@@ -45,6 +45,7 @@
           
           {% for key in data %}
               <tr>
+		  <td>{{key.method}}</td>
                   <td>{{ key.number }}</td>
                   <td>{{ key.time }}</td>                 
               </tr>

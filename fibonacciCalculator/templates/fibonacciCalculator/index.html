@@ -7,28 +7,38 @@
     <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap-theme.min.css">
 </head>
 <body>
+<style>
+.callCalcbtn {
+    
+    text-align: center;
+    
+}
+   
+</style>
 <h1 class="text-center"> Nth Fibonacci Number </h1>
-  <div class="col-lg-12">
+ <div class="col-lg-12">
       <style>
         .form-signin {
           max-width: 550px;
           padding: 15px;
           margin: 0 auto;
-        }    
+     }    
       </style>
 
-<div class = "panel panel-primary">
-   <div class = "panel-heading">
-      <h3 class = "panel-title">Nth Fibonacci nubmer calculator</h3>
-   </div>
+	<div class = "panel panel-primary">
+   		<div class = "panel-heading">
+      			<h3 class = "panel-title">Nth Fibonacci number calculator</h3>
+  		 </div>
    
-   <div class = "panel-body">
-     This a Django application for calculating Nth Fibonacci number.
-   </div>
-</div>
+   		<div class = "panel-body">
+     		Welcome to Nth Fibonacci number calculator.</br> It takes input from user to give back the user Nth Fibonacci number with time taken for calculation.</br> It assumes that the Fibonacci series start with default value which is 1,1,2,3,5,8,13 etc. </br> For example, if user input 6, which will be the value of N and calculator will return 8 as output which is indeed 6th Fibonacci number starting with default number.</br>
+		Fibonacci calculator is built with Django, Bootstrap and Jquery frameworks.</br>
 
-     
-      
-    </div>
+   		</div>	
+	</div>
+	<div class="callCalcbtn">
+    		 <a class="btn btn-info" role="button" href="{% url 'calc' %}">Calculate Fibonacci</a>
+     	 </div>
+</div>
 </body>
 </html>
