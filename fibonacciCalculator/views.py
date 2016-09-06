@@ -3,6 +3,7 @@
 
 from django.shortcuts import render, HttpResponse
 import timeit
+import datetime
 
 # finding fibonacci numbers using recursion
 def CalcFibonacci(x):
@@ -30,6 +31,7 @@ def calc(request):
         methodData = {} 
 	methodData['method'] = "Recursive"	      
         methodData['number'] = CalcFibonacci(N)
-        methodData['time'] = t.timeit(number=1)             
+        methodData['time'] = t.timeit(number=1)
+	methodData['date'] = datetime.datetime.now().date()             
         calculatedData.append(methodData)
     return render(request, 'fibonacciCalculator/calc.html', {'data': calculatedData})
