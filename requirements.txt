@@ -1,4 +1,4 @@
-django
+Django==1.8
 django-secure
 django-model-utils
 psycopg2
