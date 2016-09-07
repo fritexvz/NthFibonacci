@@ -1,9 +1,11 @@
-# views.py
+# fibonacciCalculator/views.py
 #http://drksephy.github.io/2015/07/16/django/
 
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,RequestContext
 import timeit
 import datetime
+
+from fibonacciCalculator.models import FibonacciNumbers
 
 # finding fibonacci numbers using recursion
 def CalcFibonacci(x):
@@ -24,14 +26,17 @@ def callClac(request):
     return render(request, 'fibonacciCalculator/calc.html')
 
 def calc(request):
-    calculatedData = []
+    calculatedData = []     
     if request.method == 'POST':
         N = int(request.POST.get('number') ) 
 	t = timeit.Timer(lambda: CalcFibonacci(N))	     
-        methodData = {} 
+        methodData = {}
+	methodData['postion'] = N 
 	methodData['method'] = "Recursive"	      
         methodData['number'] = CalcFibonacci(N)
         methodData['time'] = t.timeit(number=1)
-	methodData['date'] = datetime.datetime.now().date()             
-        calculatedData.append(methodData)
+	methodData['date'] = datetime.datetime.now().date() 
+  	entry =  FibonacciNumbers(position = N, value = methodData['number'], time = methodData['time'], date =  methodData['date'], method = methodData['method'])
+	entry.save()          
+        calculatedData.append(methodData)   
     return render(request, 'fibonacciCalculator/calc.html', {'data': calculatedData})

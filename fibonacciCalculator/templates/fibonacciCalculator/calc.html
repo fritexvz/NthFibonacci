@@ -34,10 +34,11 @@
           <table class="table table-bordered table-hover table-striped tablesorter">
               <thead>
               <tr>
-		<th class="header"> Method <i class="icon-sort"></i></th>
-                <th class="header"> Nth Fibonacci <i class="icon-sort"></i></th>
+		<th class="header"> Position <i class="icon-sort"></i></th>
+                <th class="header"> Fibonacci number <i class="icon-sort"></i></th>
                 <th class="header"> Time taken <i class="icon-sort"></i></th>
 		<th class="header"> Date <i class="icon-sort"></i></th>
+		<th class="header"> Method <i class="icon-sort"></i></th>
                 
               </tr>
           </thead>
@@ -46,10 +47,11 @@
           
           {% for key in data %}
               <tr>
-		  <td>{{key.method}}</td>
+		  <td>{{key.postion}}</td>		  
                   <td>{{ key.number }}</td>
                   <td>{{ key.time }}</td> 
-		  <td>{{ key.date }}</td>                
+		  <td>{{ key.date }}</td> 
+		  <td>{{key.method}}</td>               
               </tr>
           {% endfor %}
           

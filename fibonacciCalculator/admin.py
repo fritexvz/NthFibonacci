@@ -1,3 +1,4 @@
 from django.contrib import admin
+from fibonacciCalculator.models import FibonacciNumbers
 
-# Register your models here.
+admin.site.register(FibonacciNumbers)
