@@ -31,6 +31,7 @@
           </form>
       </div>
       <div   class="table-responsive ">
+	<p class="bg-info">Fibonacci Calculation History.</p>
           <table class="table table-bordered table-hover table-striped tablesorter">
               <thead>
               <tr>
@@ -47,8 +48,12 @@
           
           {% for key in data %}
               <tr>
-		  <td>{{key.postion}}</td>		  
-                  <td>{{ key.number }}</td>
+<!--
+		<script>
+    		alert('The {{key.postion}}th Fibonacci number is: {{ key.number }} (Time taken:{{ key.time }})');
+		</script>-->
+		  <td>{{key.position}}</td>		  
+                  <td>{{ key.value }}</td>
                   <td>{{ key.time }}</td> 
 		  <td>{{ key.date }}</td> 
 		  <td>{{key.method}}</td>               

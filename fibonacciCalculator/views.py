@@ -1,5 +1,7 @@
 # fibonacciCalculator/views.py
-#http://drksephy.github.io/2015/07/16/django/
+# http://drksephy.github.io/2015/07/16/django/
+# https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+# https://blog.pythonanywhere.com/60/
 
 from django.shortcuts import render, HttpResponse,RequestContext
 import timeit
@@ -31,12 +33,15 @@ def calc(request):
         N = int(request.POST.get('number') ) 
 	t = timeit.Timer(lambda: CalcFibonacci(N))	     
         methodData = {}
-	methodData['postion'] = N 
-	methodData['method'] = "Recursive"	      
-        methodData['number'] = CalcFibonacci(N)
+	methodData['position'] = N 		      
+        methodData['value'] = CalcFibonacci(N)
         methodData['time'] = t.timeit(number=1)
 	methodData['date'] = datetime.datetime.now().date() 
-  	entry =  FibonacciNumbers(position = N, value = methodData['number'], time = methodData['time'], date =  methodData['date'], method = methodData['method'])
+	methodData['method'] = "Recursive"
+  	entry =  FibonacciNumbers(position = N, value = methodData['value'], time = methodData['time'], date =  methodData['date'], method = methodData['method'])
 	entry.save()          
-        calculatedData.append(methodData)   
+        calculatedData.append(methodData)
+    else:
+	calculatedfibonacci  = FibonacciNumbers.objects.all()
+ 	calculatedData = calculatedfibonacci
     return render(request, 'fibonacciCalculator/calc.html', {'data': calculatedData})
